@@ -1,0 +1,42 @@
+html {
+    font-family: sans-serif;
+}
+body {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+#game-board {
+    display: grid;
+    border: 2px solid #eee;
+    grid-template-rows: 50px 50px 50px;
+    grid-template-columns: 50px 50px 50px;
+}
+
+.box {
+    background: #e1e1e1;
+    border: 2px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.middle {
+    background: #f2df3a;
+
+}
+
+
+
+footer {
+    margin-top: 50px;
+    color: gray;
+}
