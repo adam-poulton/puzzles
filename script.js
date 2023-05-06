@@ -47571,26 +47571,6 @@ const SEEDS = [
 
 initPuzzle();
 
-// document.addEventListener("keyup", (e) => {
-//     let key = String(e.key);
-//     if (key === "Backspace" && nextLetter !== 0) {
-//         deleteLetter();
-//         return;
-//     }
-
-//     if (key === "Enter") {
-//         checkGuess();
-//         return;
-//     }
-
-//     let found = key.match(/[a-z]/gi)
-//     if (!found || found.length > 1) {
-//         return;
-//     } else {
-//         insertLetter(key);
-//     }
-// })
-
 const submitButton = document.getElementById('submit-button');
 const correctGuesses = document.getElementById('correct-guesses');
 
