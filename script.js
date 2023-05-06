@@ -1,7 +1,8 @@
-let nextLetter = 0;
-let currentGuess = [];
-let puzzleString = "";
 const puzzleCharCounts = new Map();
+const submitButton = document.getElementById('submit-button');
+const correctGuesses = document.getElementById('correct-guesses');
+const previousGuesses = [];
+let puzzleString = "";
 
 
 function shuffle(array) {
@@ -40,6 +41,10 @@ function initPuzzle() {
 
 function isValidGuess(string) {
     const guess = string.toLowerCase();
+    // Check if the guess has already been accepted
+    if (previousGuesses.contains(guess)) {
+        return false;
+    }
 
     // Check that each character is in the puzzle a legal number of times
     for (let i = 0; i < guess.length; i++) {
@@ -47571,9 +47576,6 @@ const SEEDS = [
 
 initPuzzle();
 
-const submitButton = document.getElementById('submit-button');
-const correctGuesses = document.getElementById('correct-guesses');
-
 const checkGuess = function(event) {
     event.preventDefault();
 
@@ -47584,8 +47586,8 @@ const checkGuess = function(event) {
         guessItem.textContent = userInput.toLowerCase();
         correctGuesses.appendChild(guessItem);
         document.getElementById('word-input').value = '';
+        previousGuesses.push(userInput.toLowerCase());
     }
-    console.log(userInput);
 }
 
 document.addEventListener("keyup", (e) => {
@@ -47595,3 +47597,10 @@ document.addEventListener("keyup", (e) => {
         return;
     }
 })
+
+let tiles = document.querySelectorAll(".box");
+
+tiles.forEach(el => el.addEventListener('click', (event) => {
+    const userInput = document.getElementById('word-input');
+    userInput.value = userInput.value + el.textContent.toLowerCase();
+}));

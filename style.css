@@ -51,9 +51,17 @@ body {
     font-size: 1.2em;
 }
 
+.box:hover {
+    cursor: pointer;
+    background: #acacac;
+}
+
 .middle {
     background: #f2df3a;
+}
 
+.middle:hover {
+    background: #b2a52c;
 }
 
 input {
