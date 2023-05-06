@@ -4,24 +4,28 @@ html {
 body {
     margin: 0 auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    flex-grow: 1;
 }
 
 .container > div {
     margin-bottom: 20px;
+
 }
 
 #game-board {
     display: grid;
     border: 2px solid #eee;
-    grid-template-rows: 50px 50px 50px;
-    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: repeat(3, 60px);
+    grid-template-columns: repeat(3, 60px);
 }
 
 #word-form {
@@ -32,12 +36,13 @@ body {
 #correct-guesses {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: 200px;
+    width: 180px;
     text-align: left;
 }
 
 #correct-guesses > p {
     margin: 5px;
+    font-size: large;
 }
 
 .box {
@@ -48,7 +53,7 @@ body {
     justify-content: center;
     color: #000;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 .box:hover {
@@ -74,7 +79,8 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
-    font-size: 14px;
+    font-size: large;
+    width: 150px;
 }
   
 input:focus {
