@@ -47608,4 +47608,3 @@ tiles.forEach(el => el.addEventListener('click', () => {
     userInput.value = userInput.value + el.textContent.toLowerCase();
 }));
 
-document.getElementById('word-input').focus();
