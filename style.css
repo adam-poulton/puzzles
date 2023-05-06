@@ -8,7 +8,13 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+
+.container > div {
+    margin-bottom: 20px;
 }
 
 #game-board {
@@ -16,6 +22,11 @@ body {
     border: 2px solid #eee;
     grid-template-rows: 50px 50px 50px;
     grid-template-columns: 50px 50px 50px;
+}
+
+#word-form {
+    border: 2px solid #aa0000;
+    margin: 20px;
 }
 
 .box {
@@ -34,6 +45,18 @@ body {
 
 }
 
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+}
+  
+input:focus {
+    border-color: #f2df3a;
+    box-shadow: 0 0 5px #f2df3a;
+}
 
 
 footer {

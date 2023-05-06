@@ -1,6 +1,7 @@
 let nextLetter = 0;
 let currentGuess = [];
 let puzzleString = "";
+const puzzleCharCounts = new Map();
 
 
 function shuffle(array) {
@@ -29,11 +30,50 @@ function initPuzzle() {
         element.innerHTML = puzzleString.charAt(index).toUpperCase()
         
     }
+    // populate the map to track the number of occurances of each character in the puzzle
+    for (let i = 0; i < puzzleString.length; i++) {
+        const char = puzzleString.charAt(i);
+        puzzleCharCounts.set(char, (puzzleCharCounts.get(char) || 0) + 1);
+    }
 
 }
 
+function isValidGuess(string) {
+    const guess = string.toLowerCase();
 
+    // Check that each character is in the puzzle a legal number of times
+    for (let i = 0; i < guess.length; i++) {
+        const char = guess.charAt(i);
+        
+        // Check if the current character is not present in the puzzleString
+        if (!puzzleCharCounts.has(char)) {
+            return false;
+        }
 
+        // Check if the count of the current characer is valid
+        const countGuess = guess.split(char).length - 1;
+        const countPuzzle = puzzleCharCounts.get(char);
+        if (countGuess > countPuzzle) {
+            return false;
+        }
+    }
+
+    // Check if the 'magic' character is present in the guess
+    const isPresent = guess.includes(puzzleString.charAt(4))
+    if (!isPresent) {
+        return false;
+    }
+
+    // Check if the guess is a valid word
+    const isValid = WORDS.includes(guess);
+    if (isValid) {
+        return true;
+    } 
+    else {
+        return false;
+    }
+
+}
 
 
 const WORDS = [
@@ -47531,22 +47571,46 @@ const SEEDS = [
 
 initPuzzle();
 
+// document.addEventListener("keyup", (e) => {
+//     let key = String(e.key);
+//     if (key === "Backspace" && nextLetter !== 0) {
+//         deleteLetter();
+//         return;
+//     }
+
+//     if (key === "Enter") {
+//         checkGuess();
+//         return;
+//     }
+
+//     let found = key.match(/[a-z]/gi)
+//     if (!found || found.length > 1) {
+//         return;
+//     } else {
+//         insertLetter(key);
+//     }
+// })
+
+const submitButton = document.getElementById('submit-button');
+const correctGuesses = document.getElementById('correct-guesses');
+
+const checkGuess = function(event) {
+    event.preventDefault();
+
+    const userInput = document.getElementById('word-input').value;
+
+    if (isValidGuess(userInput)) {
+        const guessItem = document.createElement('p');
+        guessItem.textContent = userInput.toLowerCase();
+        correctGuesses.appendChild(guessItem)
+    }
+    console.log(userInput);
+}
+
 document.addEventListener("keyup", (e) => {
     let key = String(e.key);
-    if (key === "Backspace" && nextLetter !== 0) {
-        deleteLetter();
-        return;
-    }
-
     if (key === "Enter") {
         checkGuess();
         return;
-    }
-
-    let found = key.match(/[a-z]/gi)
-    if (!found || found.length > 1) {
-        return;
-    } else {
-        insertLetter(key);
     }
 })
