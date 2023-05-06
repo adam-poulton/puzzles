@@ -47578,8 +47578,8 @@ initPuzzle();
 
 const checkGuess = function(event) {
     event.preventDefault();
-
-    const userInput = document.getElementById('word-input').value;
+    const input = document.getElementById('word-input');
+    const userInput = input.value;
 
     if (isValidGuess(userInput)) {
         const guessItem = document.createElement('p');
@@ -47588,6 +47588,7 @@ const checkGuess = function(event) {
         document.getElementById('word-input').value = '';
         previousGuesses.push(userInput.toLowerCase());
     }
+    input.focus();
 }
 
 document.addEventListener("keyup", (e) => {
@@ -47598,9 +47599,13 @@ document.addEventListener("keyup", (e) => {
     }
 })
 
+document.querySelector(".submit-button").addEventListener('click', checkGuess);
+
 let tiles = document.querySelectorAll(".box");
 
-tiles.forEach(el => el.addEventListener('click', (event) => {
+tiles.forEach(el => el.addEventListener('click', () => {
     const userInput = document.getElementById('word-input');
     userInput.value = userInput.value + el.textContent.toLowerCase();
 }));
+
+document.getElementById('word-input').focus();

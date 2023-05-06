@@ -10,7 +10,6 @@
             <h1>Spelling Bee</h1>
         </header>
         <div class="messages">
-            <h2>Type to begin</h2>
         </div>
         <div class="instructions">
             <p>Words must contain the middle letter. Letters cannot be reused.</p>
@@ -27,10 +26,9 @@
                 <div id="7" class="box"></div>
                 <div id="8" class="box"></div>
             </div>
-            <div>
-
-                <input type="text" id="word-input">
-
+            <div class="input-container">
+                <input type="text" id="word-input" autocomplete="off">
+                <button class="submit-button"></button>
             </div>
             <div id="correct-guesses"></div>
             
