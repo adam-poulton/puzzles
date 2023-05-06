@@ -18,7 +18,6 @@ body {
 
 .container > div {
     margin-bottom: 20px;
-
 }
 
 #game-board {
@@ -43,6 +42,7 @@ body {
 #correct-guesses > p {
     margin: 5px;
     font-size: large;
+    text-transform: uppercase;
 }
 
 .box {
@@ -87,6 +87,7 @@ input {
     outline: none;
     font-size: large;
     width: 150px;
+    text-transform: uppercase;
 }
   
 input:focus {
