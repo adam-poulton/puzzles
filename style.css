@@ -29,6 +29,17 @@ body {
     margin: 20px;
 }
 
+#correct-guesses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 200px;
+    text-align: left;
+}
+
+#correct-guesses > p {
+    margin: 5px;
+}
+
 .box {
     background: #e1e1e1;
     border: 2px solid #eee;

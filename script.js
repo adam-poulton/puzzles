@@ -47599,10 +47599,11 @@ const checkGuess = function(event) {
 
     const userInput = document.getElementById('word-input').value;
 
-    if (isValidGuess(userInput)) {
+    if (!isValidGuess(userInput)) {
         const guessItem = document.createElement('p');
         guessItem.textContent = userInput.toLowerCase();
-        correctGuesses.appendChild(guessItem)
+        correctGuesses.appendChild(guessItem);
+        document.getElementById('word-input').value = '';
     }
     console.log(userInput);
 }
@@ -47610,7 +47611,7 @@ const checkGuess = function(event) {
 document.addEventListener("keyup", (e) => {
     let key = String(e.key);
     if (key === "Enter") {
-        checkGuess();
+        checkGuess(e);
         return;
     }
 })
