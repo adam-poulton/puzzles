@@ -54,11 +54,17 @@ body {
     color: #000;
     font-weight: bold;
     font-size: 1.5em;
+    user-select: none;
+    transition: border-color 0.3s;
 }
 
 .box:hover {
     cursor: pointer;
     background: #acacac;
+}
+
+.box.clicked {
+    border-color: #f2df3a;
 }
 
 .middle {
@@ -88,7 +94,7 @@ input:focus {
     box-shadow: 0 0 5px #f2df3a;
 }
 
-.submit-button {
+#submit-button {
     position: absolute;
     top: 50%;
     right: 5px; /* Adjust the button's position as needed */
@@ -100,12 +106,12 @@ input:focus {
     font-weight: bold;
 }
 
-.submit-button:hover {
+#submit-button:hover {
     cursor: pointer;
     background-color: #f2df3a;
 }
 
-.submit-button:after {
+#submit-button:after {
     content: "\2192"; /* Unicode value for the right arrow symbol */
 }
   

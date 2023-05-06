@@ -32901,6 +32901,7 @@ spiders
 spidery
 spied
 spies
+spiel
 spigot
 spike
 spiked
