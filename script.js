@@ -42,7 +42,7 @@ function initPuzzle() {
 function isValidGuess(string) {
     const guess = string.toLowerCase();
     // Check if the guess has already been accepted
-    if (previousGuesses.contains(guess)) {
+    if (previousGuesses.includes(guess)) {
         return false;
     }
 
