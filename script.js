@@ -96,7 +96,7 @@ const checkGuess = function(event) {
         document.getElementById('word-input').value = '';
         previousGuesses.push(userInput.toLowerCase());
     }
-    input.focus();
+    input.focus({preventScroll: true});
 }
 
 
