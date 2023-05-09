@@ -32,15 +32,12 @@ body {
     margin: 20px;
 }
 
-#correct-guesses {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+#guesses {
     width: 180px;
     text-align: left;
 }
 
-#correct-guesses > p {
-    margin: 5px;
+#guesses > p {
     font-size: large;
     text-transform: uppercase;
 }

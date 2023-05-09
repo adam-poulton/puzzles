@@ -1,8 +1,8 @@
 const puzzleCharCounts = new Map();
-const board = document.getElementById("game-board");
+const board = document.getElementById('game-board');
 const submitButton = document.getElementById('submit-button');
-const correctGuesses = document.getElementById('correct-guesses');
-const previousGuesses = [];
+const guessesDiv = document.getElementById('guesses');
+const guesses = [];
 let words = [];
 let seeds = [];
 let answer = "";
@@ -45,7 +45,7 @@ function generatePuzzle() {
 function isValidGuess(string) {
     const guess = string.toLowerCase();
     // Check if the guess has already been accepted
-    if (previousGuesses.includes(guess)) {
+    if (guesses.includes(guess)) {
         return false;
     }
 
@@ -90,11 +90,9 @@ const checkGuess = function(event) {
     const userInput = input.value;
 
     if (isValidGuess(userInput)) {
-        const guessItem = document.createElement('p');
-        guessItem.textContent = userInput.toLowerCase();
-        correctGuesses.appendChild(guessItem);
         document.getElementById('word-input').value = '';
-        previousGuesses.push(userInput.toLowerCase());
+        guesses.push(userInput.toLowerCase());
+        guessesDiv.children[0].innerText = [...guesses].join(", ")
     }
     input.focus({preventScroll: true});
 }
@@ -126,7 +124,6 @@ function setUp() {
 
     tiles.forEach(el => {
         let isClicked = false;
-        let isMouseOver = false;
         el.addEventListener('click', () => {
             const userInput = document.getElementById('word-input');
             userInput.value += el.textContent.toLowerCase();
