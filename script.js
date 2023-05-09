@@ -1,5 +1,6 @@
 const puzzleCharCounts = new Map();
 const board = document.getElementById('game-board');
+const input = document.getElementById('word-input')
 const submitButton = document.getElementById('submit-button');
 const guessesDiv = document.getElementById('guesses');
 const guesses = [];
@@ -86,19 +87,26 @@ function isValidGuess(string) {
 
 const checkGuess = function(event) {
     event.preventDefault();
-    const input = document.getElementById('word-input');
     const userInput = input.value;
-
+    clearError();
     if (isValidGuess(userInput)) {
-        document.getElementById('word-input').value = '';
         guesses.push(userInput.toLowerCase());
-        guessesDiv.children[0].innerText = [...guesses].join(", ")
+        guessesDiv.children[0].innerText = [...guesses].join(", ");
+    } else if (userInput.length > 0) {
+        showError();
     }
+    document.getElementById('word-input').value = '';
     input.focus({preventScroll: true});
 }
 
 
+const showError = () => {
+    input.classList.add('error');
+}
 
+const clearError = () => {
+    input.classList.remove('error');
+}
 
 
 
@@ -119,6 +127,8 @@ function setUp() {
     // load the word and seed list from their json files
     loadWords();
     submitButton.addEventListener('click', checkGuess);
+    input.addEventListener('keydown', clearError);
+    document.addEventListener('mousedown', clearError);
 
     let tiles = document.querySelectorAll(".box");
 
@@ -129,6 +139,7 @@ function setUp() {
             userInput.value += el.textContent.toLowerCase();
         });
         el.addEventListener('mousedown', () => {
+            clearError();
             isClicked = true;
             el.classList.add('clicked');
         });
@@ -137,13 +148,11 @@ function setUp() {
             el.classList.remove('clicked');
         });
         el.addEventListener('mouseenter', () => {
-            isMouseOver = true;
             if (isClicked) {
                 el.classList.add('clicked');
             }
         });
         el.addEventListener('mouseleave', () => {
-            isMouseOver = false;
             if (!isClicked) {
                 el.classList.remove('clicked');
             }
@@ -164,7 +173,7 @@ function setUp() {
             checkGuess(e);
             return;
         }
-    })
+    });
 }
 
 window.onload = setUp;

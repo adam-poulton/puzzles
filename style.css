@@ -27,11 +27,6 @@ body {
     grid-template-columns: repeat(3, 60px);
 }
 
-#word-form {
-    border: 2px solid #aa0000;
-    margin: 20px;
-}
-
 #guesses {
     width: 180px;
     text-align: left;
@@ -92,6 +87,12 @@ input:focus {
     box-shadow: 0 0 5px #f2df3a;
 }
 
+.error, 
+.error:focus {
+    border-color: #ccc;
+    box-shadow: 0 0 5px red;
+}
+
 #submit-button {
     position: absolute;
     top: 50%;
@@ -111,11 +112,4 @@ input:focus {
 
 #submit-button:after {
     content: "\2192"; /* Unicode value for the right arrow symbol */
-}
-  
-
-
-footer {
-    margin-top: 50px;
-    color: gray;
 }
