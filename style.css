@@ -17,7 +17,7 @@ body {
 }
 
 .container > div {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #game-board {
@@ -112,4 +112,41 @@ input:focus {
 
 #submit-button:after {
     content: "\2192"; /* Unicode value for the right arrow symbol */
+}
+
+
+.progress-container {
+    width: 182px;
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    
+}
+.progress-bar {
+    width: 80%;
+    height: 5px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    position: relative;
+}
+  
+.progress {
+    height: 100%;
+    background-color: #f2df3a;
+    width: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.progress-goal {
+    position: absolute;
+    margin-right: auto;
+    border: 1px solid #000;
+}
+
+.progress-value {
+    position: absolute;
+    margin-left: auto;
+    border: 1px solid #000;
 }
