@@ -9,7 +9,6 @@ let words = [];
 let seeds = [];
 let answers = [];
 let answer = "";
-let letter = "";
 let puzzle = "";
 
 
