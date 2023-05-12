@@ -141,6 +141,7 @@ const checkGuess = function(event) {
 
 const showError = () => {
     input.classList.add('error');
+    setTimeout(clearError, 600);
 }
 
 
@@ -151,7 +152,6 @@ const clearError = () => {
 const updateProgressBar = () => {
     var container = document.querySelector('.progress-container');
     var progress = document.querySelector('.progress');
-    var progressBar = document.querySelector('.progress-bar');
     var progressGoal = document.querySelector('.progress-goal');
     var progressValue = document.querySelector('.progress-value');
     progress.style.width = Math.floor(100 * (guesses.length / answers.length)) + '%';
@@ -175,7 +175,7 @@ async function loadWords() {
         await fetch('answers.json')
             .then(response => response.json())
             .then(data => {
-                answers = data[answer].filter(word => word.includes(answer.charAt(4)));
+                answers = data[answer].filter(word => word.includes(puzzle.charAt(4)));
                 answers.push(answer);
             })
             .then(()=> updateProgressBar());
